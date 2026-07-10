@@ -41,9 +41,19 @@ class Solution {
     }
 
     public int[] searchRange(int[] nums, int target) {
-        return new int[] {
-            firstPosition(nums, target),
-            lastPosition(nums, target)
-        };
+        int[] ans = {-1, -1};
+
+        int first = firstPosition(nums, target);
+
+        if (first == -1) {
+            return ans;
+        }
+
+        int last = lastPosition(nums, target);
+
+        ans[0] = first;
+        ans[1] = last;
+
+        return ans;
     }
 }
