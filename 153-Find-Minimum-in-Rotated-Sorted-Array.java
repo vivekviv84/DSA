@@ -1,20 +1,24 @@
 class Solution {
-    public int binarySearch(int[] nums, int low, int high){
-        int smallest = Integer.MAX_VALUE;
-        while(low <= high){
-            int mid = (low+high)/2;
-            if(nums[mid]<= nums[low] && nums[mid] <= nums[high] ){
-                smallest = Math.min(smallest, nums[mid]);
-            }
-            if(nums[mid]> nums[high] && nums[low] > nums[high]){
-                low = mid+1;
+
+    public int findMin(int[] nums) {
+
+        int low = 0;
+        int high = nums.length - 1;
+
+        while(low < high){
+
+            int mid = low + (high - low) / 2;
+
+            if(nums[mid] > nums[high]){
+
+                low = mid + 1;
             }
             else{
-                high = mid-1;
+
+                high = mid;
             }
-        }return smallest; 
-    }
-    public int findMin(int[] nums) {
-        return binarySearch(nums, 0, nums.length-1);
+        }
+
+        return nums[low];
     }
 }
