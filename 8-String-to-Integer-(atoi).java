@@ -8,7 +8,7 @@ class Solution {
 
         int sign = 1;
         int i = 0;
-        int ans = 0;
+        long ans = 0;
 
         if (s.charAt(i) == '-') {
             sign = -1;
@@ -22,7 +22,7 @@ class Solution {
             int digit = s.charAt(i) - '0';
 
             if (ans > Integer.MAX_VALUE / 10 ||
-               (ans == Integer.MAX_VALUE / 10 && digit >= (sign == 1 ?7:8))) {
+               (ans == Integer.MAX_VALUE / 10 && digit > (sign == 1 ?7:8))) {
 
                 return sign == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
             }
@@ -31,6 +31,6 @@ class Solution {
             i++;
         }
 
-        return sign * ans;
+        return (int)(sign * ans);
     }
 }
